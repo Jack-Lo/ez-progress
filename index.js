@@ -51,7 +51,9 @@ main.prototype = {
   from (prg) {
     var _t = this
 
-    _t.config.from = prg
+    var _prg = random(prg)
+
+    _t.config.from = _prg
   },
   progress (prg, cb, spd, dly) {
     var _t = this
@@ -88,6 +90,8 @@ main.prototype = {
     var data = _t.data
     var next = data.next
 
+    var _prg = random(prg)
+
     if (_t.data.status === 1) {  // ended
       return _t
     }
@@ -99,10 +103,10 @@ main.prototype = {
       next.status = 1
     }
 
-    if (next.dist + prg > cfg.to) {  // 对超出部分裁剪对齐
+    if (next.dist + _prg > cfg.to) {  // 对超出部分裁剪对齐
       next.dist = cfg.to
     } else {
-      next.dist += prg
+      next.dist += _prg
     }
 
     next.callback = cb
@@ -122,16 +126,20 @@ main.prototype = {
     var _t = this
     var data = _t.data
 
-    _t.add(prg - data.progress, cb, spd, dly)
+    var _prg = random(prg)
+
+    _t.add(_prg - data.progress, cb, spd, dly)
 
     return _t
   },
-  end () {
+  end (cb) {
     var _t = this
 
     _t.data.status = 1
     cTO(_t.timer)
     _t.fire('ended', _t.data)
+
+    cb && cb(_t.data)
 
     return _t
   },
