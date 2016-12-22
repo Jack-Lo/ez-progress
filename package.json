@@ -1,6 +1,6 @@
 {
   "name": "ez-progress",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "一个web（伪）进度插件",
   "main": "index.build.js",
   "scripts": {
