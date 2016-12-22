@@ -1,6 +1,6 @@
 {
   "name": "ez-progress",
-  "version": "0.1.0",
+  "version": "0.0.1",
   "description": "一个web（伪）进度插件",
   "main": "index.build.js",
   "scripts": {
@@ -18,5 +18,16 @@
   "devDependencies": {
     "babel-cli": "^6.18.0",
     "babel-preset-es2015": "^6.18.0"
-  }
+  },
+  "directories": {
+    "doc": "doc"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jack-Lo/ez-progress.git"
+  },
+  "bugs": {
+    "url": "https://github.com/jack-Lo/ez-progress/issues"
+  },
+  "homepage": "https://github.com/jack-Lo/ez-progress#readme"
 }
