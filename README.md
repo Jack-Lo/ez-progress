@@ -44,7 +44,7 @@ var progress = new Progress({
 #### 参数对照  
 
 api | 入参 | 返回值 | 说明
---- | ---- | ------
+--- | ---- | ------ | ---
 on        |  event(str), callback(func)                                     |  -  |  -
 fire      |  event(str), callback(func)                                     |  -  |  -
 handler   |  -                                                              |  Object  |  -
