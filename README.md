@@ -57,11 +57,11 @@ reset     |  callback(func)                                                 |  t
 destroy   |  callback(func)                                                 |  this  |  销毁进度（config、data、timer、on、fire、handler），进度不可恢复。
 
 
-> 留意：  
-> 1. progress、speed暂不支持负值，所以add不支持传负数，go不支持倒退；
-> 2. callback为必传项，无回调要设置为`null`；
-> 3. speed和delay都是非必传项；
-> 4. 所有callback都注入一个`data`。
+留意：  
+1. progress、speed暂不支持负值，所以add不支持传负数，go不支持倒退；  
+2. callback为必传项，无回调要设置为`null`；  
+3. speed和delay都是非必传项；  
+4. 所有callback都注入一个`data`。  
 
 
 #### callback (data)  
@@ -100,10 +100,10 @@ destroy   | destroy被执行的时候
 reset     | reset被执行的时候
 
 
-> 留意：  
-> 1. add/go等api传参的回调与通过on来订阅的回调是有本质区别的，api传参的回调是在本次进度完成之后执行，而on订阅的回调则是在一调用api就触发的；
-> 2. passed事件的发生条件是，当多个进度在同步进行，在某个阶段a进度被b进度赶上并覆盖的时候，我们将取消a的过程，而继续完成b的过程，这个a被b赶上的那一瞬间，a被取消的那一刻，会触发一次passed事件；
-> 3. destroy的回调都是在销毁之前执行的，因为销毁后的实例已经不具备执行回调的功能。
+留意：  
+1. add/go等api传参的回调与通过on来订阅的回调是有本质区别的，api传参的回调是在本次进度完成之后执行，而on订阅的回调则是在一调用api就触发的；  
+2. passed事件的发生条件是，当多个进度在同步进行，在某个阶段a进度被b进度赶上并覆盖的时候，我们将取消a的过程，而继续完成b的过程，这个a被b赶上的那一瞬间，a被取消的那一刻，会触发一次passed事件；  
+3. destroy的回调都是在销毁之前执行的，因为销毁后的实例已经不具备执行回调的功能。  
 
 
 
@@ -174,5 +174,4 @@ setTimeout(() => {
 ### log  
 
 0.1.0 - publish  
-0.1.5 - 将原来返回实例的设计修改为返回函数本身  
 
