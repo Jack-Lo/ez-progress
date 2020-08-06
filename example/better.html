@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script>
+    window.loadingStartTime = new Date();
+  </script>
+  <script src="/index.umd.js"></script>
+  <style>
+  #loading {
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    left: 50%;
+    top: 50%;
+    margin-left: -50px;
+    margin-top: -50px;
+    background-color: rgba(0, 0, 0, .3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  #progress {
+    color: #fff;
+    font-size: 30px;
+    font-weight: bold;
+  }
+  </style>
+</head>
+<body>
+  <div id="loading">
+    <div id="progress">0%</div>
+  </div>
+  <script>
+    var prg = new Progress({
+      from: 0,
+      to: 100,
+      speed: [0, 15],
+      delay: [0, 300]
+    })
+
+    var $loading = document.getElementById('loading');
+    var $prg = document.getElementById('progress');
+
+    prg.on('progress', function (res) {
+      var progress = parseInt(res.progress)  // 注意进度取整，不然有可能会出现小数
+      $prg.innerHTML = progress + '%';
+    })
+
+    prg.go([80, 90], null, [0, 3], [0, 200])
+
+    window.onload = loadingCompleted
+
+    if (new Date - window.loadingStartTime > 5000) {  // 如果超时了，则执行完成进度
+      loadingCompleted()
+    } else {  // 如果没有超时，则在“剩余的时间”之后执行完成进度
+      setTimeout(function () {
+        loadingCompleted()
+      }, 5000 - (new Date - window.loadingStartTime))
+    }
+
+    function loadingCompleted () {
+      prg.complete(function () {
+        setTimeout(function () {  // 延迟隐藏loading
+          $loading.style = 'display: none;';
+        }, 1000)
+      },  [0, 5], [0, 50])
+    }
+  </script>
+</body>
+</html>

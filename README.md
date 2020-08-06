@@ -112,7 +112,7 @@ reset     | reset被执行的时候
 
 ## 用法  
 
-下面我们看演示代码（多es6语法，请自行转换es5。。。）：  
+下面我们看演示代码：  
 
 ```javascript
 var $prg = document.getElementById('progress')
@@ -172,9 +172,3 @@ setTimeout(() => {
 ```
 
 这里的演示代码只是一个简单的用法介绍，我们还详细介绍了一个网页进度loading的设计过程[Demo](./doc/startup.md)。  
-
-
-## log  
-
-0.1.0 - publish  
-
